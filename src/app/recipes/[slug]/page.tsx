@@ -18,14 +18,14 @@ export default async function Recipe({
   const { data, contentHtml } = await getRecipeBySlug(slug);
 
   return (
-    <main className="z-10 max-w-2xl p-10">
+    <main className="z-10 max-w-2xl p-2">
       <span className="sr-only">{data.title}</span>
       <div className="z-10 py-10">
         <h1 className="text-6xl font-extrabold text-blue-400">{data.title}</h1>
         <p className="pt-10 text-xl text-slate-900">{data.subtitle}</p>
       </div>
 
-      <figure className="z-10 aspect-video w-full overflow-hidden rounded-xl ring-4 ring-purple-400">
+      <figure className="z-10 aspect-video w-full overflow-hidden rounded-xl bg-slate-300 ring-4 ring-purple-400">
         <Image
           className="block w-full -translate-y-1/4 object-cover"
           alt={data.title}

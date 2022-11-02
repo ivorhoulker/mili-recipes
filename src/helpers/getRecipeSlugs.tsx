@@ -25,5 +25,5 @@ export async function getRecipeParams() {
       };
     })
   );
-  return params;
+  return params.sort((a, b) => a.priority - b.priority);
 }

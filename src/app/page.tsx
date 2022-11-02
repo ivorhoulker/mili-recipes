@@ -5,10 +5,10 @@ export default async function Home() {
   const { data, contentHtml } = await getPageBySlug("index");
   return (
     <>
-      <main className="z-10 max-w-2xl">
+      <main className="z-10 max-w-2xl  p-2">
         <span className="sr-only">{data.title}</span>
         <div className="z-10 flex w-full flex-grow flex-row items-end justify-between py-10 text-blue-400">
-          <figure className="z-10  w-3/4 pt-10">
+          <figure className="z-10 w-3/4 pt-10">
             <Image
               className="block w-full object-cover"
               alt={data.title}
