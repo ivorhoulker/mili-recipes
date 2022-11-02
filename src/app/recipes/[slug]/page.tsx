@@ -1,5 +1,4 @@
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { getRecipeBySlug } from "@src/helpers/getRecipeBySlug";
 
 export async function generateStaticParams() {
@@ -17,7 +16,6 @@ export default async function Recipe({
 }) {
   const { slug } = params;
   const { data, contentHtml } = await getRecipeBySlug(slug);
-  // const image = await import(`../../recipe-images/${data.image}`);
 
   return (
     <div className="flex justify-center">

@@ -2,7 +2,7 @@
 title: "吉列炸豬扒"
 subtitle: "脆卜卜，好好味，慶祝做party food一流"
 image: "pork-chop.jpg"
-priority: 1
+priority: 2
 ---
 
 ## 預備材料
