@@ -13,19 +13,17 @@ const Link = (props: Props) => {
   const { href, children, active, ...rest } = props;
   if (!href?.startsWith("http")) {
     return (
-      <>
-        <NextLink
-          {...rest}
-          href={href}
-          className={clsx(
-            "transition-color duration-300 ease-out",
-            !active && "cursor-pointer hover:text-blue-400",
-            active && "cursor-default py-3 font-bold"
-          )}
-        >
-          {children}
-        </NextLink>
-      </>
+      <NextLink
+        {...rest}
+        href={href}
+        className={clsx(
+          "transition-color duration-300 ease-out",
+          !active && "cursor-pointer hover:text-blue-400",
+          active && "cursor-default py-3 font-bold"
+        )}
+      >
+        {children}
+      </NextLink>
     );
   }
   return (
