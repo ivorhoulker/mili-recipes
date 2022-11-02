@@ -5,7 +5,7 @@ import { getRecipeBySlug } from "@src/helpers/getRecipeBySlug";
 import { getRecipeParams } from "../../../helpers/getRecipeSlugs";
 
 export async function generateStaticParams() {
-  const params = getRecipeParams();
+  const params = await getRecipeParams();
   return params;
 }
 

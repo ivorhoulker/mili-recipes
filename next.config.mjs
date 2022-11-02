@@ -8,13 +8,12 @@
 const config = {
   experimental: {
     appDir: true,
-    runtime: "experimental-edge",
   },
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
+    locales: ["zh-Hant"],
+    defaultLocale: "zh-Hant",
   },
 };
 export default config;
