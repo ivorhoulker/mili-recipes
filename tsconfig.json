@@ -4,7 +4,9 @@
     "paths": {
       "@src/*": ["*"],
       "@app/*": ["app/*"],
-      "@content/*": ["content/*"]
+      "@content/*": ["content/*"],
+      "@type/*": ["types/*"],
+      "@helpers/*": ["helpers/*"]
     },
     "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],

@@ -8,6 +8,7 @@
 const config = {
   experimental: {
     appDir: true,
+    runtime: "experimental-edge",
   },
   reactStrictMode: true,
   swcMinify: true,
