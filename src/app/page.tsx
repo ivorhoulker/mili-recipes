@@ -1,12 +1,16 @@
-import Image from "next/image";
+import { getPageBySlug } from "@src/helpers/getPageBySlug";
 
-export default function Home() {
+export default async function Home() {
+  const { data, contentHtml } = await getPageBySlug("index");
+
   return (
-    <div>
-      <main>
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
-        </h1>
+    <div className="flex justify-center">
+      <main className="prose p-10 lg:prose-xl">
+        <h1>{data.title}</h1>
+
+        <div>
+          <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+        </div>
       </main>
     </div>
   );

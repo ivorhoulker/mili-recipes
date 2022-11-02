@@ -2,9 +2,9 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
+      "@src/*": ["*"],
       "@app/*": ["app/*"],
-      "@content/*": ["content/*"],
-      "@shared/*": ["app/_shared/*"]
+      "@content/*": ["content/*"]
     },
     "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
