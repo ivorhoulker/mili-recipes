@@ -6,7 +6,8 @@
       "@app/*": ["app/*"],
       "@content/*": ["content/*"],
       "@type/*": ["types/*"],
-      "@helpers/*": ["helpers/*"]
+      "@helpers/*": ["helpers/*"],
+      "@tina/*": [".tina/*"]
     },
     "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],

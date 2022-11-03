@@ -1,7 +1,8 @@
 import { defineConfig } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
-const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+const branch =
+  "tina" || process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "tina";
 
 export default defineConfig({
   branch,
@@ -22,7 +23,7 @@ export default defineConfig({
       {
         name: "recipes",
         label: "Recipes",
-        path: "/content/recipes",
+        path: "content/recipes",
         fields: [
           {
             type: "string",
@@ -50,6 +51,7 @@ export default defineConfig({
             isBody: true,
           },
         ],
+
         ui: {
           // This is an DEMO router. You can remove this to fit your site
           router: ({ document }) => `/recipes/${document._sys.filename}`,
