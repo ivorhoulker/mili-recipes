@@ -4,9 +4,10 @@ import clsx from "clsx";
 import { getRecipeBySlug } from "@src/helpers/getRecipeBySlug";
 import { getRecipeParams } from "../../../helpers/getRecipeSlugs";
 
+export const revalidate = 10;
 export async function generateStaticParams() {
   const params = await getRecipeParams();
-  return params;
+  return params.map((x) => ({ slug: x.slug }));
 }
 
 export default async function Recipe({
