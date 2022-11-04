@@ -1,13 +1,12 @@
 import { defineConfig } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
-const branch =
-  "tina" || process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "tina";
+const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
 export default defineConfig({
   branch,
-  clientId: null, // Get this from tina.io
-  token: null, // Get this from tina.io
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "", // Get this from tina.io
+  token: process.env.TINA_TOKEN || "", // Get this from tina.io
   build: {
     outputFolder: "admin",
     publicFolder: "public",
@@ -20,6 +19,42 @@ export default defineConfig({
   },
   schema: {
     collections: [
+      {
+        name: "pages",
+        label: "Pages",
+        path: "content/pages",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "subtitle",
+            label: "Subtitle",
+            required: false,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+        ],
+
+        ui: {
+          router: ({ document }) => {
+            if (document._sys.filename === "index") {
+              return `/`;
+            }
+
+            return `/${document._sys.filename}`;
+          },
+        },
+      },
       {
         name: "recipes",
         label: "Recipes",
@@ -39,9 +74,15 @@ export default defineConfig({
             required: true,
           },
           {
-            type: "string",
+            type: "image",
             name: "image",
             label: "Image",
+            required: true,
+          },
+          {
+            type: "number",
+            name: "priority",
+            label: "Priority",
             required: true,
           },
           {
@@ -53,7 +94,6 @@ export default defineConfig({
         ],
 
         ui: {
-          // This is an DEMO router. You can remove this to fit your site
           router: ({ document }) => `/recipes/${document._sys.filename}`,
         },
       },

@@ -1,30 +1,20 @@
 "use client";
 
-import type {
-  Exact,
-  RecipesQuery,
-} from "../../../../.tina/__generated__/types";
-
 import Image from "next/image";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import clsx from "clsx";
+import type { getRecipeBySlug } from "@src/helpers/getRecipeBySlug";
 import { useTina } from "tinacms/dist/react";
 
-export const Display = ({
-  res,
-}: {
-  res: {
-    data: RecipesQuery;
-    variables: Exact<{
-      relativePath: string;
-    }>;
-    query: string;
-  };
-}) => {
+interface Props {
+  recipeData: Awaited<ReturnType<typeof getRecipeBySlug>>;
+}
+
+export const RecipeDisplay = ({ recipeData }: Props) => {
   const { data } = useTina({
-    query: res.query,
-    variables: res.variables,
-    data: res.data,
+    query: recipeData.query,
+    variables: recipeData.variables,
+    data: recipeData.data,
   });
   return (
     <>
@@ -44,7 +34,7 @@ export const Display = ({
           height={4032 / 4}
         />
       </figure>
-      <div className={clsx("prose prose-slate max-w-2xl")}>
+      <div className={clsx("prose prose-slate max-w-2xl pt-10")}>
         <TinaMarkdown content={data.recipes.body} />
       </div>
     </>

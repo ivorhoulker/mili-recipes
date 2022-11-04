@@ -1,9 +1,12 @@
 import "./globals.css";
 
-import BG from "./BG";
-import LinksMenu from "./LinksMenu";
+import BG from "../components/BG";
+import LinksMenu from "./app.module.menu";
 import { getPageBySlug } from "../helpers/getPageBySlug";
-import { getRecipeParams } from "../helpers/getRecipeSlugs";
+import { getRecipeParams } from "../helpers/getRecipeParams";
+
+export const revalidate = 600;
+export const dynamic = "error";
 
 export default async function RootLayout({
   children,
@@ -16,8 +19,8 @@ export default async function RootLayout({
   return (
     <html lang="zh-Hant" className="min-h-full min-w-full">
       <head>
-        <title>{data.title}</title>
-        <meta name="description" content={data.title} />
+        <title>{data.pages.title}</title>
+        <meta name="description" content={data.pages.title} />
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="z-10 min-h-full min-w-full">

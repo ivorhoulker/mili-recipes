@@ -1,29 +1,9 @@
-import fs from "fs";
-import { getRecipeBySlug } from "./getRecipeBySlug";
-import { recipesDirectory } from "./recipeSchema";
+import client from "@tina/__generated__/client";
 
-export function getRecipeSlugs() {
-  const fileNames = fs.readdirSync(recipesDirectory);
-  const slugs = fileNames.map((fileName) => fileName.replace(/\.md$/, ""));
-  return slugs;
-}
-export type RecipeParams = {
-  title: string;
-  subtitle: string;
-  image: string;
-  priority: number;
-  slug: string;
-}[];
-export async function getRecipeParams() {
-  const slugs = getRecipeSlugs();
-  const params = await Promise.all(
-    slugs.map(async (slug) => {
-      const { data } = await getRecipeBySlug(slug);
-      return {
-        slug: slug,
-        ...data,
-      };
-    })
+export async function getRecipeSlugs() {
+  const recipeData = await client.queries.recipesConnection();
+  const slugs = recipeData?.data?.recipesConnection?.edges?.map(
+    (recipe) => recipe?.node?._sys.filename
   );
-  return params.sort((a, b) => a.priority - b.priority);
+  return slugs;
 }
