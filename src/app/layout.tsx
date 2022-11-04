@@ -5,9 +5,6 @@ import LinksMenu from "./app.module.menu";
 import { getPageBySlug } from "../helpers/getPageBySlug";
 import { getRecipeParams } from "../helpers/getRecipeParams";
 
-export const revalidate = 600;
-export const dynamic = "error";
-
 export default async function RootLayout({
   children,
 }: {

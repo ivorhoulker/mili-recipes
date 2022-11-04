@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PageDisplay from "@src/app/app.module.display";
 import { getPageBySlug } from "@src/helpers/getPageBySlug";
 
