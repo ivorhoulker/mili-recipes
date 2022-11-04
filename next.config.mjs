@@ -15,5 +15,13 @@ const config = {
     locales: ["zh-Hant"],
     defaultLocale: "zh-Hant",
   },
+  async rewrites() {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin/index.html",
+      },
+    ];
+  },
 };
 export default config;

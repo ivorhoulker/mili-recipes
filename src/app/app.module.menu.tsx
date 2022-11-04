@@ -1,10 +1,14 @@
 "use client";
 
 import Link from "../components/Link";
-import type { RecipeParams } from "../helpers/getRecipeSlugs";
+import type { getRecipeParams } from "../helpers/getRecipeParams";
 import { usePathname } from "next/navigation";
 
-const LinksMenu = ({ recipeParams }: { recipeParams: RecipeParams }) => {
+const LinksMenu = ({
+  recipeParams,
+}: {
+  recipeParams: Awaited<ReturnType<typeof getRecipeParams>>;
+}) => {
   const path = usePathname();
   return (
     <>
@@ -14,7 +18,7 @@ const LinksMenu = ({ recipeParams }: { recipeParams: RecipeParams }) => {
             Home
           </Link>
         </div>
-        {recipeParams.map((params) => {
+        {recipeParams?.map((params) => {
           return (
             <div key={params.slug}>
               <Link
